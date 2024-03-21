@@ -1,17 +1,19 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Student extends Account{
-    ArrayList<Course> courses = new ArrayList<>();
+    ArrayList<Course> courses;
     String house;
     Student(String username, String password) {
         super(username,password);
+        courses = new ArrayList<>();
+        sortingQuiz();//ain't it wrong?
     }
     public void takeCourse() {
         System.out.print("Choose your desired course.");
         Hogwarts.viewAllCourses();
         Scanner in = new Scanner(System.in);
         Course newCourse = new Course();
-        //////////////////////////////////////k
+        Hogwarts.coursesList.add(newCourse);
     }
     public void viewCourses() {
         int i = 1;
@@ -23,7 +25,7 @@ public class Student extends Account{
     public void viewTeachers() {
         Hogwarts.viewAllTeachers();
     }
-    public void sortingQuiz() {
+    public void sortingQuiz() {//this is not the best way for doing this-_-
         System.out.print("Choose a house to enter:\n1-Gryffindor  2-Hufflepuff  3-Ravenclaw  4-Slytherin");
         Scanner in = new Scanner(System.in);
         switch(in.nextInt()) {
@@ -44,4 +46,8 @@ public class Student extends Account{
                 sortingQuiz();
         }
     }
+    public void signUp(Student student) {
+        Hogwarts.studentsList.add(student);
+    }
+    //////////////////////login
 }
