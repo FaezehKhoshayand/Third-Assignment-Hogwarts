@@ -131,7 +131,8 @@ public class Main {
 //        }
 //    }
     public static void assistantMenu(Assistant assistant) {
-        System.out.println("Type in your desired option\n1-Remove teacher  2-Remove student 3-View course and student 4-Teacher profile 5-Student profile 6-Create course 7-Main Menu");
+        System.out.println("Type in your desired option\n1-Remove teacher  2-Remove student 3-View course and student 4-Teacher profile 5-Student profile\n" +
+                " 6-Create course  7-Change password 8-Change username  9-Main Menu");
         Scanner in = new Scanner(System.in);
         switch(in.nextInt()) {
             case 1:
@@ -173,6 +174,24 @@ public class Main {
                 assistant.createCourse(Hogwarts.coursesList.get(k));
                 break;
             case 7:
+                System.out.println("Enter your new password");
+                Scanner u = new Scanner(System.in);
+                String newPassword = u.nextLine();
+                while(!assistant.validatePassword(newPassword)) {
+                    System.out.println("Invalid");
+                    System.out.println("Enter your new password");
+                    Scanner w = new Scanner(System.in);
+                    newPassword = w.nextLine();
+                }
+                assistant.changePassword(newPassword);
+                break;
+            case 8:
+                System.out.println("Enter your new username");
+                Scanner t = new Scanner(System.in);
+                String newUsername = t.nextLine();
+                assistant.changeUsername(newUsername);
+                break;
+            case 9:
                 runMenu();
                 break;
             default:
@@ -180,7 +199,7 @@ public class Main {
         }
     }
     public static void teacherMenu(Teacher teacher) {
-        System.out.println("Type in your desired option\n1-View courses  2-Take course 3-Main Menu");
+        System.out.println("Type in your desired option\n1-View courses  2-Take course  3-Student scoring  4-Change password  5-Change username  6-Main Menu");
         Scanner in = new Scanner(System.in);
         switch(in.nextInt()) {
             case 1:
@@ -189,12 +208,38 @@ public class Main {
             case 2:
                 teacher.takeCourse();////////bug dare ha
                 break;
-            default:
+            case 3:
+                ///////
+                Hogwarts.viewAllStudents();
+                //teacher.studentScoring();
+                break;
+            case 4:
+                System.out.println("Enter your new password");
+                Scanner n = new Scanner(System.in);
+                String newPassword = n.nextLine();
+                while(!teacher.validatePassword(newPassword)) {
+                    System.out.println("Invalid");
+                    System.out.println("Enter your new password");
+                    Scanner w = new Scanner(System.in);
+                    newPassword = w.nextLine();
+                }
+                teacher.changePassword(newPassword);
+                break;
+            case 5:
+                System.out.println("Enter your new username");
+                Scanner t = new Scanner(System.in);
+                String newUsername = t.nextLine();
+                teacher.changeUsername(newUsername);
+                break;
+            case 6:
                 runMenu();
+                break;
+            default:
+                teacherMenu(teacher);
         }
     }
     public static void studentMenu(Student student) {
-        System.out.println("Type in your desired option\n1-View courses  2-Take course  3-View teachers 4-Main Menu");
+        System.out.println("Type in your desired option\n1-View courses  2-Take course  3-View teachers  4-Change password  5-Change username 6-Main Menu");
         Scanner in = new Scanner(System.in);
         switch(in.nextInt()) {
             case 1:
@@ -210,7 +255,28 @@ public class Main {
                 break;
             case 3:
                 student.viewTeachers();
-                return;
+                break;
+            case 4:
+                System.out.println("Enter your new password");
+                Scanner n = new Scanner(System.in);
+                String newPassword = n.nextLine();
+                while(!student.validatePassword(newPassword)) {
+                    System.out.println("Invalid");
+                    System.out.println("Enter your new password");
+                    Scanner w = new Scanner(System.in);
+                    newPassword = w.nextLine();
+                }
+                student.changePassword(newPassword);
+                break;
+            case 5:
+                System.out.println("Enter your new username");
+                Scanner t = new Scanner(System.in);
+                String newUsername = t.nextLine();
+                student.changeUsername(newUsername);
+                break;
+            case 6:
+                runMenu();
+                break;
             default:
                 studentMenu(student);
         }
