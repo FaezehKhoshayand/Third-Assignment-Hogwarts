@@ -10,6 +10,12 @@ public class Account implements AccountManagement{
         this.password = password;
         this.accountID = UUID.randomUUID();
     }
+    public String getPassword() {
+        return password;
+    }
+    public String getUsername() {
+        return username;
+    }
     public String usernameGetter() {
         return username;
     }

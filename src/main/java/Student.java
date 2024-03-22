@@ -8,12 +8,8 @@ public class Student extends Account{
         courses = new ArrayList<>();
         sortingQuiz();//ain't it wrong?
     }
-    public void takeCourse() {
-        System.out.print("Choose your desired course.");
-        Hogwarts.viewAllCourses();
-        Scanner in = new Scanner(System.in);
-        Course newCourse = new Course();
-        Hogwarts.coursesList.add(newCourse);
+    public void takeCourse(Course course) {
+        courses.add(course);
     }
     public void viewCourses() {
         int i = 1;
