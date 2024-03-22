@@ -7,6 +7,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hogwarts School Management System");
         Hogwarts hogwarts = new Hogwarts();
+        Assistant Faezeh = new Assistant("Faezeh","Faezeh_12");
+        Hogwarts.addAssistant(Faezeh);
         runMenu();
     }
 
@@ -16,10 +18,10 @@ public class Main {
             Scanner in = new Scanner(System.in);
             switch(in.nextInt()) {
                 case 1:
-                    login();
+                    loginSignup(1);
                     break;
                 case 2:
-                    signup();
+                    loginSignup(2);
                     break;
                 case 3:
                     return;
@@ -28,58 +30,106 @@ public class Main {
             }
         }
     }
-    public static void login() {
+    public static void loginSignup(int n) {
         System.out.println("Choose your role to login\n1-Assistant  2-Teacher  3-Student  4-Main Menu");
         Scanner in = new Scanner(System.in);
+        String username, password;
         switch(in.nextInt()) {
             case 1:
-
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                return;
-        }
-    }
-
-    public static void signup() {
-        System.out.println("Choose your role to sign up\n1-Assistant  2-Teacher  3-Student  4-Main Menu");
-        Scanner in = new Scanner(System.in);
-        String username,password;
-        switch(in.nextInt()) {
-            case 1:
-                Scanner e = new Scanner(System.in);
-                username = e.nextLine();
-                Scanner r = new Scanner(System.in);
-                password = r.nextLine();//validate password chetoriiii
-                Assistant assistant = new Assistant(username, password);
-                //Assistant sign up
+                System.out.println("Enetr your username: ");
+                Scanner p = new Scanner(System.in);
+                username = p.nextLine();
+                System.out.println("Enetr your password: ");
+                Scanner i = new Scanner(System.in);
+                password = i.nextLine();
+                Assistant assistant = new Assistant(username,password);
+                if(n == 1) {
+                    assistant = assistant.login(username, password);
+                }
+                else {
+                    assistant.signup(assistant);
+                }
                 assistantMenu(assistant);
                 break;
             case 2:
-                Scanner i = new Scanner(System.in);
-                username = i.nextLine();
-                Scanner n = new Scanner(System.in);
-                password = n.nextLine();//validate password chetoriiii
-                Teacher teacher = new Teacher(username, password);
-                //teacher sign up
+                System.out.println("Enetr your username: ");
+                Scanner q = new Scanner(System.in);
+                username = q.nextLine();
+                System.out.println("Enetr your password: ");
+                Scanner y = new Scanner(System.in);
+                password = y.nextLine();
+                Teacher teacher = new Teacher(username,password);
+                if(n == 1) {
+                    teacher = teacher.login(username, password);
+                }
+                else {
+                    teacher.signUp(teacher);
+                }
                 teacherMenu(teacher);
                 break;
             case 3:
-                Scanner s = new Scanner(System.in);
-                username = s.nextLine();
-                Scanner w = new Scanner(System.in);
-                password = w.nextLine();//validate password chetoriiii
-                Student student = new Student(username, password);
-                //student sign up
+                System.out.println("Enetr your username: ");
+                Scanner d = new Scanner(System.in);
+                username = d.nextLine();
+                System.out.println("Enetr your password: ");
+                Scanner r = new Scanner(System.in);
+                password = r.nextLine();
+                Student student = new Student(username,password);
+                if (n == 1) {
+                    student = student.login(username, password);
+                }
+                else {
+                    student.signUp(student);
+                }
                 studentMenu(student);
                 break;
             case 4:
                 runMenu();
+                break;
+            default:
+                loginSignup(n);
         }
     }
+
+//    public static void signup() {
+//        System.out.println("Choose your role to sign up\n1-Assistant  2-Teacher  3-Student  4-Main Menu");
+//        Scanner in = new Scanner(System.in);
+//        String username,password;
+//        switch(in.nextInt()) {
+//            case 1:
+//                Scanner e = new Scanner(System.in);
+//                username = e.nextLine();
+//                Scanner r = new Scanner(System.in);
+//                password = r.nextLine();
+//                Assistant assistant = new Assistant(username, password);
+//                assistant.signup(assistant);
+//                assistantMenu(assistant);
+//                break;
+//            case 2:
+//                Scanner i = new Scanner(System.in);
+//                username = i.nextLine();
+//                Scanner n = new Scanner(System.in);
+//                password = n.nextLine();
+//                Teacher teacher = new Teacher(username, password);
+//                teacher.signUp(teacher);
+//                teacherMenu(teacher);
+//                break;
+//            case 3:
+//                Scanner s = new Scanner(System.in);
+//                username = s.nextLine();
+//                Scanner w = new Scanner(System.in);
+//                password = w.nextLine();
+//                Student student = new Student(username, password);
+//                student.signUp(student);
+//                studentMenu(student);
+//                break;
+//            case 4:
+//                runMenu();
+//                break;
+//            default:
+//                signup();
+//        }
+//    }
     public static void assistantMenu(Assistant assistant) {
         System.out.println("Type in your desired option\n1-Remove teacher  2-Remove student 3-View course and student 4-Teacher profile 5-Student profile 6-Create course 7-Main Menu");
         Scanner in = new Scanner(System.in);
