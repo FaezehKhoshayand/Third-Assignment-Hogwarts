@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Assistant extends Account{
+
     Assistant(String username, String password) {
         super(username,password);
     }
@@ -29,6 +30,16 @@ public class Assistant extends Account{
         Hogwarts.addCourse(course);
     }
     //signup
-    ///log in
+    public void signup(Assistant assistant) {
+            Hogwarts.assistantsList.add(assistant);
+    }
+    public boolean login(String username,String password) {
+        for(Assistant assistant : Hogwarts.assistantsList) {
+            if(assistant.getUsername().equals(username) && assistant.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
     //security check if they have logged in
 }

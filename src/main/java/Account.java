@@ -7,7 +7,12 @@ public class Account implements AccountManagement{
     private UUID accountID;
     Account(String username, String password) {
         this.username = username;
-        this.password = password;
+        if(validatePassword(password)) {
+            this.password = password;
+        }
+        else {
+
+        }
         this.accountID = UUID.randomUUID();
     }
     public String getPassword() {
@@ -16,11 +21,9 @@ public class Account implements AccountManagement{
     public String getUsername() {
         return username;
     }
-    public String usernameGetter() {
-        return username;
-    }
+
     @Override
-    public boolean validatePassword(String enteredPassword) {
+    public boolean validatePassword(String enteredPassword) {//Why can't it be static?
         String regex = "^(?=.*[0-9])"
                 + "(?=.*[a-z])(?=.*[A-Z])"
                 + "(?=.*[@#$%^&+=])"

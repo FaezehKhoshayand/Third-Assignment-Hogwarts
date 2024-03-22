@@ -5,17 +5,16 @@ public class Hogwarts {
     static ArrayList<Student> studentsList;
     static ArrayList<Teacher> teachersList;
     static ArrayList<Course> coursesList;
-    static ArrayList<Assistant> AssistantsList;
+    static ArrayList<Assistant> assistantsList;
 
     // TODO: Define Functionalities
     Hogwarts() {
         studentsList = new ArrayList<>();
         teachersList = new ArrayList<>();
         coursesList = new ArrayList<>();
-        AssistantsList = new ArrayList<>();
+        assistantsList = new ArrayList<>();
     }
     static public void viewAllTeachers() {
-        //TODO
         int i = 1;
         for(Teacher teacher : teachersList) {
             System.out.print(i + "-" + teacher);
@@ -25,7 +24,6 @@ public class Hogwarts {
     }
 
     static public void viewAllStudents() {
-        //TODO
         int i = 1;
         for(Student student : studentsList) {
             System.out.print(i + "-" + student);
@@ -35,7 +33,6 @@ public class Hogwarts {
     }
 
     static public void viewAllCourses() {
-        //TODO
         int i = 1;
         for(Course course : coursesList) {
             System.out.print(i + "-" + course);
@@ -54,6 +51,6 @@ public class Hogwarts {
         coursesList.add(course);
     }
     public static void addAssistant(Assistant assistant) {
-        AssistantsList.add(assistant);
+        assistantsList.add(assistant);
     }
 }

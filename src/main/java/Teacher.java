@@ -25,15 +25,15 @@ public class Teacher extends Account{
         Course newCourse = new Course();
         Hogwarts.addCourse(newCourse);
     }
-    public void viewTakenCourses() {
-        int i = 1;
-        for(Course course : courses) {
-            System.out.println(i + "-" + course);
-            i++;
-        }
-    }
     public void signUp(Teacher teacher) {
         ////
         Hogwarts.teachersList.add(teacher);
     }
-}
+    public boolean login(String username,String password) {
+        for(Teacher teacher : Hogwarts.teachersList) {
+            if(teacher.getUsername().equals(username) && teacher.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }}

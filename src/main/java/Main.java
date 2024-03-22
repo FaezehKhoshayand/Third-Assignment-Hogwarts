@@ -45,7 +45,7 @@ public class Main {
     }
 
     public static void signup() {
-        System.out.println("Choose your role to login\n1-Assistant  2-Teacher  3-Student  4-Main Menu");
+        System.out.println("Choose your role to sign up\n1-Assistant  2-Teacher  3-Student  4-Main Menu");
         Scanner in = new Scanner(System.in);
         String username,password;
         switch(in.nextInt()) {

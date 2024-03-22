@@ -19,9 +19,11 @@ public class Student extends Account{
         }
     }
     public void viewTeachers() {
-        Hogwarts.viewAllTeachers();
+        for(Course course : courses) {
+            System.out.println(course.courseTeacher.getUsername());
+        }
     }
-    public void sortingQuiz() {//this is not the best way for doing this-_-
+    public void sortingQuiz() {
         System.out.print("Choose a house to enter:\n1-Gryffindor  2-Hufflepuff  3-Ravenclaw  4-Slytherin");
         Scanner in = new Scanner(System.in);
         switch(in.nextInt()) {
@@ -43,7 +45,14 @@ public class Student extends Account{
         }
     }
     public void signUp(Student student) {
-        Hogwarts.studentsList.add(student);
+        Hogwarts.addStudent(student);
     }
-    //////////////////////login
+    public boolean login(String username,String password) {
+        for(Student student : Hogwarts.studentsList) {
+            if(student.getUsername().equals(username) && student.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
