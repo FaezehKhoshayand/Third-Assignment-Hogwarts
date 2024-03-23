@@ -132,7 +132,7 @@ public class Main {
 //    }
     public static void assistantMenu(Assistant assistant) {
         System.out.println("Type in your desired option\n1-Remove teacher  2-Remove student 3-View course and student 4-Teacher profile 5-Student profile\n" +
-                " 6-Create course  7-Change password 8-Change username  9-Main Menu");
+                " 6-Create course  7-Change password 8-Change username  9-Accept requested courses  10-Accept requested teachers  11-Add assistant  12-Main Menu");
         Scanner in = new Scanner(System.in);
         switch(in.nextInt()) {
             case 1:
@@ -192,6 +192,21 @@ public class Main {
                 assistant.changeUsername(newUsername);
                 break;
             case 9:
+                assistant.acceptRequestedCourse();
+                break;
+            case 10:
+                assistant.acceptRequestedTeacher();
+                break;
+            case 11:
+                System.out.println("Enter a username for the new assistant");
+                Scanner l = new Scanner(System.in);
+                String username = l.nextLine();
+                System.out.println("Enter a password for the new assistant");
+                Scanner o = new Scanner(System.in);
+                String password = o.nextLine();
+                Assistant newAssistant = new Assistant(username, password);
+                assistant.signup(newAssistant);
+            case 12:
                 runMenu();
                 break;
             default:
