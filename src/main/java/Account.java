@@ -2,7 +2,6 @@ import java.util.UUID;
 import java.util.regex.*;
 public class Account implements AccountManagement{
     private String username;
-    // TODO: Passwords should hashed
     private String password;
     private UUID accountID;
     Account(String username, String password) {

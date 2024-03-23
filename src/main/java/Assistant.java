@@ -79,9 +79,6 @@ public class Assistant extends Account{
         System.out.println("Invalid!");
         return null;
     }
-    public void acceptRequestedStudent(Student student) {
-
-    }
     public void acceptRequestedTeacher() {
         if(hasLogged) {
             int j = 1;

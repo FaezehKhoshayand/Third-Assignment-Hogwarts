@@ -1,18 +1,20 @@
 import java.util.ArrayList;
 public class Hogwarts {
 
-    // TODO: Define Attributes
     static ArrayList<Student> studentsList;
     static ArrayList<Teacher> teachersList;
     static ArrayList<Course> coursesList;
     static ArrayList<Assistant> assistantsList;
+    static ArrayList<Teacher>  requestedTeachers;
+    static ArrayList<Course>  requestedCourses;
 
-    // TODO: Define Functionalities
     Hogwarts() {
         studentsList = new ArrayList<>();
         teachersList = new ArrayList<>();
         coursesList = new ArrayList<>();
         assistantsList = new ArrayList<>();
+        requestedTeachers = new ArrayList<>();
+        requestedCourses = new ArrayList<>();
     }
     static public void viewAllTeachers() {
         int i = 1;
@@ -52,5 +54,23 @@ public class Hogwarts {
     }
     public static void addAssistant(Assistant assistant) {
         assistantsList.add(assistant);
+    }
+    public static void addRequestedTeacher(Teacher teacher) {
+        requestedTeachers.add(teacher);
+    }
+    public static void addRequestedCourse(Course course) {
+        requestedCourses.add(course);
+    }
+    public static void addRequestedStudent(Student student) {
+        
+    }
+    public static void removeRequestedTeacher(Teacher teacher) {
+        requestedTeachers.remove(teacher);
+    }
+    public static void removeRequestedCourse(Course course) {
+        requestedCourses.remove(course);
+    }
+    public static void removeRequestedStudent(Student student) {
+
     }
 }

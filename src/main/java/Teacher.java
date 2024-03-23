@@ -29,8 +29,7 @@ public class Teacher extends Account{
     }
 
     public void signUp(Teacher teacher) {
-        ////
-        Hogwarts.teachersList.add(teacher);
+        Hogwarts.addRequestedTeacher(teacher);
     }
     public Teacher login(String username,String password) {
         for(Teacher teacher : Hogwarts.teachersList) {

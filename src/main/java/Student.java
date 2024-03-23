@@ -3,7 +3,12 @@ import java.util.Scanner;
 public class Student extends Account{
     ArrayList<Course> courses;
     String house;
-    Student(String username, String password) {
+    private double score;
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+    public Student(String username, String password) {
         super(username,password);
         courses = new ArrayList<>();
         sortingQuiz();//ain't it wrong?
@@ -24,9 +29,10 @@ public class Student extends Account{
         }
     }
     public void sortingQuiz() {
-        System.out.print("Choose a house to enter:\n1-Gryffindor  2-Hufflepuff  3-Ravenclaw  4-Slytherin");
+        System.out.println("Choose a house to enter:\n1-Gryffindor  2-Hufflepuff  3-Ravenclaw  4-Slytherin");
         Scanner in = new Scanner(System.in);
-        switch(in.nextInt()) {
+        int n = in.nextInt();
+        switch(n) {
             case 1:
                 this.house = "Gryffindor";
                 break;
@@ -47,12 +53,13 @@ public class Student extends Account{
     public void signUp(Student student) {
         Hogwarts.addStudent(student);
     }
-    public boolean login(String username,String password) {
+    public Student login(String username,String password) {
         for(Student student : Hogwarts.studentsList) {
             if(student.getUsername().equals(username) && student.getPassword().equals(password)) {
-                return true;
+                System.out.println("Logged in!");
+                return student;
             }
         }
-        return false;
+        return null;
     }
 }
