@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.Scanner;
 public class Assistant extends Account{
 
     boolean hasLogged;
@@ -78,5 +78,42 @@ public class Assistant extends Account{
         }
         System.out.println("Invalid!");
         return null;
+    }
+    public void acceptRequestedStudent(Student student) {
+
+    }
+    public void acceptRequestedTeacher() {
+        if(hasLogged) {
+            int j = 1;
+            for (Teacher i : Hogwarts.requestedTeachers) {
+                System.out.println(j + "-" + i);
+                j++;
+            }
+            System.out.println("Enter the number of the teacher you're willing to accept");
+            Scanner in = new Scanner(System.in);
+            int index = in.nextInt() - 1;
+            Hogwarts.addTeacher(Hogwarts.requestedTeachers.get(index));
+            Hogwarts.removeRequestedTeacher(Hogwarts.requestedTeachers.get(index));
+        }
+        else {
+            System.out.println("YOU ARE NOT ALLOWED TO DO THIS.");
+        }
+    }
+    public void acceptRequestedCourse() {
+        if(hasLogged) {
+            int j = 1;
+            for (Course i : Hogwarts.requestedCourses) {
+                System.out.println(j + "-" + i);
+                j++;
+            }
+            System.out.println("Enter the number of the course you're willing to accept");
+            Scanner in = new Scanner(System.in);
+            int index = in.nextInt() - 1;
+            Hogwarts.addCourse(Hogwarts.requestedCourses.get(index));
+            Hogwarts.removeRequestedCourse(Hogwarts.requestedCourses.get(index));
+        }
+        else {
+            System.out.println("YOU ARE NOT ALLOWED TO DO THIS.");
+        }
     }
 }
